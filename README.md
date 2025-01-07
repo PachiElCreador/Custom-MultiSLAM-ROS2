@@ -100,55 +100,6 @@ This will ensure that the workspace, Gazebo, and TurtleBot3 configurations are l
 
 ## Key Files
 
-### **1. `gazebo_multi_robot_house.launch.py`**
-This is the main launch file orchestrating the multi-robot simulation. It:
-- Defines the initial positions and names for multiple robots.
-- Launches the Gazebo server and client with a predefined world (`turtlebot3_house.world`).
-- Spawns multiple TurtleBot3 robots with URDF models and ensures sequential initialization using event handlers.
-- Optionally enables SLAM or navigation through other launch files.
-- Allows launching RViz for visualization and sets up navigation-related nodes for each robot.
-
----
-
-### **2. `bringup/bringup_launch.py`**
-This file integrates core functionalities such as SLAM, localization, and navigation. It:
-- Manages the namespaces for robots and ensures configurations are isolated.
-- Dynamically includes additional launch files (`slam_launch.py`, `localization_launch.py`, and `navigation_launch.py`) based on conditions like SLAM or map server usage.
-- Centralizes configuration parameters through YAML files and remaps transform topics.
-
----
-
-### **3. `bringup/localization_launch.py`**
-Handles the localization stack for the robots. It:
-- Loads the AMCL node (`Adaptive Monte Carlo Localization`) to localize robots using a pre-existing map.
-- Optionally launches the map server to provide static map data.
-- Configures lifecycle management for AMCL and the map server to handle node states.
-
----
-
-### **4. `bringup/navigation_launch.py`**
-Sets up the navigation stack, enabling path planning and movement. It:
-- Launches core navigation nodes, including `planner_server`, `controller_server`, `bt_navigator`, and others.
-- Configures the lifecycle manager to handle the state of navigation nodes.
-- Supports remapping topics for sensor inputs and control outputs to maintain isolation between robots.
-
----
-
-### **5. `bringup/rviz_launch.py`**
-Manages the launch of RViz for visualization. It:
-- Loads the RViz configuration file (`nav2_default_view.rviz`).
-- Dynamically sets up namespaces for visualization if multiple robots are used.
-- Handles RViz shutdown gracefully to avoid unintended crashes.
-
----
-
-### **6. `bringup/slam_launch.py`**
-This file initializes the SLAM functionality. It:
-- Launches the SLAM Toolbox (`online_sync_launch.py`) for map generation and updates.
-- Optionally launches the map saver server to store generated maps.
-- Includes lifecycle management to ensure the proper startup and shutdown of SLAM-related nodes.
-
-
 ```plaintext
 home/user/multirobot_ws/src/
    |- turtlebot3_multi_robot/
@@ -162,7 +113,57 @@ home/user/multirobot_ws/src/
             |- slam_launch.py
 ```
 
+### **1. `gazebo_multi_robot_house.launch.py`**
+This is the main launch file orchestrating the multi-robot simulation. It:
+- Defines the initial positions and names for multiple robots.
+- Launches the Gazebo server and client with a predefined world (`turtlebot3_house.world`).
+- Spawns multiple TurtleBot3 robots with URDF models and ensures sequential initialization using event handlers.
+- Optionally enables SLAM or navigation through other launch files.
+- Allows launching RViz for visualization and sets up navigation-related nodes for each robot.
+
+
+### **2. `bringup/bringup_launch.py`**
+This file integrates core functionalities such as SLAM, localization, and navigation. It:
+- Manages the namespaces for robots and ensures configurations are isolated.
+- Dynamically includes additional launch files (`slam_launch.py`, `localization_launch.py`, and `navigation_launch.py`) based on conditions like SLAM or map server usage.
+- Centralizes configuration parameters through YAML files and remaps transform topics.
+
+
+### **3. `bringup/localization_launch.py`**
+Handles the localization stack for the robots. It:
+- Loads the AMCL node (`Adaptive Monte Carlo Localization`) to localize robots using a pre-existing map.
+- Optionally launches the map server to provide static map data.
+- Configures lifecycle management for AMCL and the map server to handle node states.
+
+
+### **4. `bringup/navigation_launch.py`**
+Sets up the navigation stack, enabling path planning and movement. It:
+- Launches core navigation nodes, including `planner_server`, `controller_server`, `bt_navigator`, and others.
+- Configures the lifecycle manager to handle the state of navigation nodes.
+- Supports remapping topics for sensor inputs and control outputs to maintain isolation between robots.
+
+
+### **5. `bringup/rviz_launch.py`**
+Manages the launch of RViz for visualization. It:
+- Loads the RViz configuration file (`nav2_default_view.rviz`).
+- Dynamically sets up namespaces for visualization if multiple robots are used.
+- Handles RViz shutdown gracefully to avoid unintended crashes.
+
+
+### **6. `bringup/slam_launch.py`**
+This file initializes the SLAM functionality. It:
+- Launches the SLAM Toolbox (`online_sync_launch.py`) for map generation and updates.
+- Optionally launches the map saver server to store generated maps.
+- Includes lifecycle management to ensure the proper startup and shutdown of SLAM-related nodes.
+
+
+
+
 ## Results Achieved
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/7333d836-0acc-4692-96ce-d872b9f75326" alt="image">
+</div>
+
 
 ### 1. Multi-Robot Simulation in Gazebo
 - **Status:** Completed.
@@ -172,7 +173,7 @@ home/user/multirobot_ws/src/
 - **Status:** Completed, but with possible improvements.
 - **Details:** The SLAM functionality in RViz works decently, showing real-time mapping and navigation data. However, there are areas for improvement in the localization accuracy of the TurtleBot3 robots, as occasional discrepancies are observed between the robots' perceived positions and their actual locations in the simulation. These discrepancies may affect the overall performance of navigation tasks.
 
-### 3. Future Directions
+## Future Directions
 - **Improve SLAM algorithm:** Focus on enhancing mapping accuracy and ensuring precise localization of the robots.
 - **Collaborative Mapping:** Enable multiple robots to collaboratively share and update a global map.
 - **Robot Coordination:** Implement mechanisms for robots to account for the presence and movements of other robots in the environment, fostering better coordination and efficiency in navigation tasks.
