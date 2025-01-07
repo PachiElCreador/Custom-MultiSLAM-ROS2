@@ -12,9 +12,7 @@ Also useful to access the shared directory of ros2 humble
 sudo nautilus /opt/ros/humble/share/turtlebot3_navigation2/map
 ```
 
----
-
-## Simulation
+## Simulation multirobot_ws
 
 ### Launch Multi-Robot House Simulation
 ```bash
@@ -42,7 +40,7 @@ ros2 launch slam_toolbox online_sync_launch.py namespace:=/tb2 use_sim_time:=tru
 
 ---
 
-### Launch simulation of Robotis example
+## Launch simulation of Robotis example
 ```bash
 cd ~/turtlebot3_ws
 colcon build --symlink-install
