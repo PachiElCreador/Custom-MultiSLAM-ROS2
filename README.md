@@ -2,9 +2,9 @@
 
 ## Project Description
 
-Este proyecto implementa un sistema multi-SLAM para coordinar varios robots TurtleBot3 en un entorno simulado. Utiliza algoritmos de SLAM (Simultaneous Localization and Mapping) para fusionar mapas generados por cada robot y crear una representación global del entorno.
+This project aims to simulate and manage multiple TurtleBot3 robots navigating collaboratively in a shared environment using SLAM (Simultaneous Localization and Mapping). The system integrates ROS 2 Humble, Gazebo, and various navigation tools to enable real-time mapping, localization, and path planning for multiple robots operating in parallel.
 
-Está desarrollado en ROS2 y simulado en Gazebo.
+Unlike traditional single-robot setups, this project emphasizes the coordination of multiple robots, enabling them to share and update a global map collaboratively. This functionality supports dynamic and complex environments, meaning scenarios requiring scalable multi-robot navigation.
 
 ## Workspace Setup
 
@@ -186,3 +186,4 @@ For any questions or suggestions you can contact oscarlc10@outlook.com
 - [TurtleBot3 Official Documentation](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/#overview)
 - [Cartographer ROS Integration](https://google-cartographer-ros.readthedocs.io/en/latest/)
 - [ROS 2 Cartographer](https://ros2-industrial-workshop.readthedocs.io/en/latest/_source/navigation/ROS2-Cartographer.html)
+- [Efficient Deployment and Operation of Multiple TurtleBot3 Robots in Gazebo](https://medium.com/@arshad.mehmood/efficient-deployment-and-operation-of-multiple-turtlebot3-robots-in-gazebos-f72f6a364620)
