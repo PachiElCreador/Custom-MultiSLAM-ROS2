@@ -102,7 +102,7 @@ This will ensure that the workspace, Gazebo, and TurtleBot3 configurations are l
 
 ```plaintext
 home/user/multirobot_ws/src/
-   |- turtlebot3_multi_robot/
+   |- Custom-MultiSLAM-ROS2/
       |- launch/
          |- gazebo_multi_robot_house.launch.py
          |- bringup
@@ -156,6 +156,20 @@ This file initializes the SLAM functionality. It:
 - Optionally launches the map saver server to store generated maps.
 - Includes lifecycle management to ensure the proper startup and shutdown of SLAM-related nodes.
 
+## Simulation multirobot_ws
+
+### Launch Multi-Robot House Simulation
+```bash
+cd multirobot_ws/
+colcon build --symlink-install
+source ./install/setup.bash
+ros2 launch turtlebot3_multi_robot gazebo_multi_robot_house.launch.py #enable_drive:=True 
+```
+
+#### Teleoperation Mode
+```bash
+ros2 run turtlebot3_teleop teleop_keyboard --ros-args -r /cmd_vel:=/tb1/cmd_vel
+```
 
 
 
@@ -178,6 +192,7 @@ This file initializes the SLAM functionality. It:
 - **Collaborative Mapping:** Enable multiple robots to collaboratively share and update a global map.
 - **Robot Coordination:** Implement mechanisms for robots to account for the presence and movements of other robots in the environment, fostering better coordination and efficiency in navigation tasks.
 - **MPC implementation:** Implement Model Predictive Control (MPC) to improve the trajectory planning and control of multiple robots.
+
 
 ## Contribution
 For any questions or suggestions you can contact oscarlc10@outlook.com
