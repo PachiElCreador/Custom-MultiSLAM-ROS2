@@ -177,7 +177,7 @@ This file initializes the SLAM functionality. It:
 - **Improve SLAM algorithm:** Focus on enhancing mapping accuracy and ensuring precise localization of the robots.
 - **Collaborative Mapping:** Enable multiple robots to collaboratively share and update a global map.
 - **Robot Coordination:** Implement mechanisms for robots to account for the presence and movements of other robots in the environment, fostering better coordination and efficiency in navigation tasks.
-
+- **MPC implementation:** Implement Model Predictive Control (MPC) to improve the trajectory planning and control of multiple robots.
 
 ## Contribution
 For any questions or suggestions you can contact oscarlc10@outlook.com
